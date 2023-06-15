@@ -1,42 +1,51 @@
-
 <template>
-    
-    <div>
-        <h1>My id is </h1>
-        <button @click="fetchStudents">Fetch Students</button>
-        <div  class="scrollable" v-for="student in allStudents" :key="student.id">
-            <h1>{{student.name}}</h1>
-            <p>{{student.email}}</p>
-        </div>
-   
+  <div class="container">
+  <div class="left">
+      <StudentsData></StudentsData>
     </div>
+  <div class="right">
+  <EventsData></EventsData>
+  </div>
+  </div>
 </template>
 
 <script>
-import { mapActions , mapGetters } from 'vuex';
+import StudentsData from './StudentsData.vue'
+import EventsData from './EventsData.vue'
 export default {
-    name: 'InfiniteScroller',
-    data() {
-        return {
-            id: 0
-        }
-    },
-    
-    computed : {
-            ...mapGetters(['allStudents']),
-    },
-
-    methods: {
-    ...mapActions(['fetchStudents']),
-    fetchStudentData() {
-    this.fetchStudents();
+  name: 'InfiniteScroller',
+  components: {
+    StudentsData,
+    EventsData
+  },
+  data () {
+    return {
+      
     }
+  },
+
 }
-}
+
 </script>
 
 <style>
-.scrollable {
-   overflow-y: scroll;
-}
+.container {
+            display: flex;
+            flex-direction: row;
+        }
+        .left {
+            height: 200px;
+            display: block;
+            width: 50%;
+            /* background-color: green; */
+            overflow-y: scroll;
+        }
+        .right {
+            height: 200px;
+            /* background-color: red; */
+            display: block;
+            width: 50%;
+            overflow-y: scroll;
+        }
+
 </style>
