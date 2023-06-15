@@ -8,5 +8,6 @@
 export default {
     name: "JobDetail",
     props: ['job']
+    
 };
 </script>

@@ -14,6 +14,7 @@
     <router-link :to="{ name: 'about' }">About</router-link>
     <router-link :to="{ name: 'signup' }">Signup</router-link>
     <router-link :to="{ name: 'jobs' }">Jobs</router-link>
+    <router-link :to="{ name: 'infiniteScroll'}"> Infinite Scroller</router-link>
   </nav>
   <router-view></router-view>
   <!-- <SignupForm></SignupForm> -->
@@ -38,7 +39,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -61,6 +62,8 @@ export default {
   margin-right: 20px;
   background-color: #f2f2f2;
   border-radius: 5px;
+  background-color: lightblue;
+  text-decoration: solid;
 
   
 }
