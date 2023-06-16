@@ -24,7 +24,7 @@ import 'vue-loading-overlay/dist/css/index.css';
 
 
 export default {
-    name: 'StudentsData',
+    name: 'StudentsDataDT',
 
     data() {
         return {

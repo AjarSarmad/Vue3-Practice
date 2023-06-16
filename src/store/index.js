@@ -14,7 +14,7 @@ const store = createStore({
     isLoading: false,
     page: 1,
     pageSizeStudents: 3,
-    pageSizeEvents: 3,
+    pageSizeEvents: 4,
   },
 
   getters: {

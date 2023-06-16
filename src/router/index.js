@@ -5,6 +5,7 @@ import SignupForm from "../components/SignupForm.vue";
 import JobList from "../views/JobList.vue";
 import JobDetail from "../views/JobDetail.vue";
 import InfiniteScroller from "../views/InfiniteScroller.vue";
+import AGvDT from "../views/AGvDT.vue";
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: "/infinite-scroll",
     name: "infiniteScroll",
     component: InfiniteScroller,
+  },
+  {
+    path: "/AGvDT",
+    name: "AGvDT",
+    component: AGvDT,
   }
 
 ];

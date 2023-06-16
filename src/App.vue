@@ -15,6 +15,7 @@
     <router-link :to="{ name: 'signup' }">Signup</router-link>
     <router-link :to="{ name: 'jobs' }">Jobs</router-link>
     <router-link :to="{ name: 'infiniteScroll'}"> Infinite Scroller</router-link>
+    <router-link :to="{ name: 'AGvDT'}"> AG vs DT</router-link>
   </nav>
   <router-view></router-view>
   <!-- <SignupForm></SignupForm> -->
