@@ -1,21 +1,25 @@
 <template>
-    <div class="container">
-    <div class="upper">
-        <EventsDataAG></EventsDataAG>
-    </div>
-    <div class="lower">
-        <!-- <StudentsDataDT></StudentsDataDT> -->
-    </div>
+    <div class = "container">
+        <div class = "upper">
+            <h1 style="background-color: aqua;">DATA TABLE EXAMPLE</h1>
+            <StudentsDataDT></StudentsDataDT>
+        </div>
+        <!-- <div class = "lower">
+            <h1 style="background-color: aquamarine;">AG GRID EXAMPLE</h1>
+            <StudentsDataAG></StudentsDataAG>
+        </div>    -->
     </div>
 </template>
 
 <script>
-import EventsDataAG from './EventsDataAG.vue'
-// import StudentsDataDT from './StudentsDataDT.vue'
+// import EventsDataAG from './EventsDataAG.vue'
+import StudentsDataDT from './StudentsDataDT.vue'
+// import StudentsDataAG from './StudentsDataAG.vue';
 export default {
     components: {
-        EventsDataAG,
-        //  StudentsDataDT
+        // EventsDataAG,
+         StudentsDataDT,
+        //  StudentsDataAG
     }
 }
 </script>
@@ -25,18 +29,5 @@ export default {
     flex-direction: column;
     display: flex;
 }
-.upper {
-    height: 200px;
-            display: block;
-            /* width: 50%; */
-            /* background-color: green; */
-            /* overflow-y: scroll; */
-        }
-.lower {
-            height: 150px;
-            /* background-color: red; */
-            display: block;
-            /* width: 50%; */
-            /* overflow-y: scroll; */
-        }
+
 </style>

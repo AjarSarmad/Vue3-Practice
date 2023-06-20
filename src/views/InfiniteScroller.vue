@@ -4,7 +4,7 @@
       <StudentsData></StudentsData>
     </div>
   <div class="right">
-  <EventsData></EventsData>
+      <EventsData></EventsData>
   </div>
   </div>
 </template>

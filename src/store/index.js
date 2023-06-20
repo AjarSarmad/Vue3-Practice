@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import axios from 'axios';
 
-const uri_students = "https://univent-rest-api.herokuapp.com/api/student/getAllProfiles";
+const uri_students = "http://localhost:8088/api/student/lazyGetStudents";
 const uri_events = "https://univent-rest-api.herokuapp.com/api/event/getAllEvents" ;
 
 const store = createStore({
@@ -13,7 +13,7 @@ const store = createStore({
     visibleStudents: [ ],
     isLoading: false,
     page: 1,
-    pageSizeStudents: 3,
+    pageSizeStudents: 11,
     pageSizeEvents: 4,
   },
 
@@ -28,8 +28,8 @@ const store = createStore({
     async fetchStudents({ commit }) {
       // Fetch students and commit the mutation to update the state
       const response = await axios.get(uri_students)
-      commit("setStudents", response.data);
-      commit("setVisibleStudents", response.data.slice(0, this.state.pageSizeStudents));
+      commit("setStudents", response.data.content);
+      commit("setVisibleStudents", response.data.content.slice(0, this.state.pageSizeStudents));
     }, 
     fetchMoreStudents({ state, commit }) {
       // Fetch more students and append them to the visible students
@@ -41,6 +41,13 @@ const store = createStore({
 
       // console.log(visibleStudents + "fetchmore");
     },
+
+    async lazyFetchStudents({ commit, state }, nextPageIndex) {
+      const response = await axios.get(`${uri_students}?page=${nextPageIndex}&size=${state.pageSizeStudents}`);
+      commit("setVisibleStudents", [...state.visibleStudents, ...response.data.content]);
+    },
+    
+    
 
     async fetchEvents({ commit }) {
       // Fetch students and commit the mutation to update the state
