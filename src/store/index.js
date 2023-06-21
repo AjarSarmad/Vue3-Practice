@@ -10,6 +10,7 @@ const store = createStore({
     events: [],
     visibleEvents: [],
     students:[ ],
+    studentDetailsState: [],
     visibleStudents: [ ],
     isLoading: false,
     page: 1,
@@ -22,6 +23,7 @@ const store = createStore({
     visibleStudents: (state) => state.visibleStudents,
     allEvents: (state) => state.events,
     visibleEvents: (state) => state.visibleEvents,
+    studentDetailsState: (state) => state.studentDetailsState,
   },
   
   actions: {
@@ -47,6 +49,9 @@ const store = createStore({
       commit("setVisibleStudents", [...state.visibleStudents, ...response.data.content]);
     },
     
+    studentDetailsAction({ commit }, studentDetailsState) {
+      commit("setStudentDetailsState", studentDetailsState);
+    },
     
 
     async fetchEvents({ commit }) {
@@ -68,8 +73,7 @@ const store = createStore({
     setVisibleStudents: (state, visibleStudents) => (state.visibleStudents = visibleStudents),
     setEvents: (state, events) => (state.events = events),
     setVisibleEvents: (state, visibleEvents) => (state.visibleEvents = visibleEvents),
-
-
+    setStudentDetailsState: (state, studentDetailsState) => (state.studentDetailsState = studentDetailsState),
   },
   modules: {},
 });

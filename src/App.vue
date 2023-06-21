@@ -4,6 +4,9 @@
   <h1>{{ title }}</h1>
   <div v-if="showModal">
   <ModalVue :header="title" :text="text" theme="sale" @close="showModal = !showModal"></ModalVue>
+  <div v-if="studentDetailsState">
+  <StudentDetails :student="studentDetailsState" :display=true @close="showModal = !showModal"></StudentDetails>
+  </div>
   </div>
   <div>
   <button @click="showModal = !showModal" >Show Modal</button>
@@ -23,19 +26,25 @@
 
 <script>
 import ModalVue from './components/ModalVue.vue'
+import { mapGetters } from 'vuex'
+import StudentDetails from './views/StudentDetails.vue'
 // import SignupForm from './components/SignupForm.vue'
 export default {
   name: 'App',
   components: {
     ModalVue,
+    StudentDetails,
     // SignupForm
   },
   data () {
     return {
       title: 'My First Vue app!',
       text: 'Hey there, Its Ajar',
-      showModal: false
+      showModal: false,
     }
+  },
+  computed:{
+    ...mapGetters(['studentDetailsState']),
   },
 }
 </script>

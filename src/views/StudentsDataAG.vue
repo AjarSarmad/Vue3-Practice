@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <!-- <div class="container"> -->
     <ag-grid-vue
       class="ag-theme-alpine"
-      style="height: 500px; width: 100%"
+      style="height: 500px; width: 100%; margin-top: 10%;"
       :columnDefs="columnDefs"
       :rowData="visibleStudents"
       rowSelection="multiple"
@@ -13,19 +13,27 @@
       @paginationChanged="handlePageChange"
       @gridReady="onGridReady"
     ></ag-grid-vue>
-  </div>
+  <!-- </div> -->
 </template>
 
+
+
 <script>
+/* eslint-disable vue/no-unused-components */
 import { mapActions, mapGetters } from 'vuex';
-import { AgGridVue } from "ag-grid-vue3";
+import { AgGridVue  } from "ag-grid-vue3";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
+import StudentDetailsButton from '../components/StudentDetailsButton.vue'
+
+import StudentDetails from './StudentDetails.vue';
 
 export default {
   name: 'StudentsDataAG',
   components: {
     AgGridVue,
+    StudentDetails,
+    StudentDetailsButton
   },
   data() {
     return {
@@ -37,11 +45,17 @@ export default {
         { field: 'dob', headerName: 'Date of Birth' },
         { field: 'phone', headerName: 'Mobile no.' },
         { field: 'gender', headerName: 'Gender' },
+        { field: 'Details',
+          cellRenderer: 'StudentDetailsButton',
+  
+        }
       ],
       gridApi: null,
       gridColumnApi: null,
       gridOptions: {},
       visitedPages: [],
+      selectedStudent: null,
+      isStudentDetailsVisible: false,
     };
   },
   computed: {
@@ -65,7 +79,7 @@ export default {
           this.visitedPages.push(currentPageIndex);
         }
       }
-    },
+    }, 
   },
   mounted() {
     this.lazyFetchStudents(1);
